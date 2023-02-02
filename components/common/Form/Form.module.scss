@@ -47,7 +47,9 @@
       font-size: var(--h6);
       cursor: pointer;
     }
-
+    input[type="reset"] {
+      display: none;
+    }
     input[type="file"] {
       display: none;
     }
@@ -123,6 +125,20 @@
   .input_border {
     border-radius: 8px;
     border: 2px solid var(--gray-hover);
+  }
+
+  .image_selector {
+    position: relative;
+    .reset_btn {
+      transition: opacity 0.1s;
+      position: absolute;
+      right: -5px;
+      top: -5px;
+      opacity: 0;
+    }
+    &:hover .reset_btn {
+      opacity: 1;
+    }
   }
 
   button {
