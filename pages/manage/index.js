@@ -7,6 +7,7 @@ import { categoryList, dictArea, dictPosition } from "@utils/util";
 import ssrWrapper from "@utils/wrapper";
 import axiosInstance from "@utils/axios";
 import PageWrapper from "@components/common/PageWrapper";
+import { DEFAULT_IMAGE_URL } from "@utils/constant";
 
 export default function Manage({ data }) {
   return (
@@ -20,7 +21,7 @@ export default function Manage({ data }) {
           return (
             <section key={index} className={styles.clubContainer}>
               <div className={styles.left_section}>
-                <Image src={imageUrl || "/clublist/default.png"} alt={`${name} 메인 포스터`} layout={"fill"} objectFit={"contain"} />
+                <Image src={imageUrl || DEFAULT_IMAGE_URL} alt={`${name} 메인 포스터`} layout={"fill"} objectFit={"contain"} />
               </div>
               <div className={styles.center_section}>
                 <div className={styles.title}>{name}</div>
@@ -57,7 +58,7 @@ export default function Manage({ data }) {
                   </li>
                 </Link>
                 {position === "pre" ? (
-                  <Link href={`/club/modification?clubId=${clubId}`}>
+                  <Link href={`/club/${clubId}/modification`}>
                     <li className={styles.element}>
                       동아리 정보 수정
                       <Arrow />
