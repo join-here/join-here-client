@@ -4,6 +4,7 @@ import styles from "@styles/pages/mypage.module.scss";
 import Location from "@public/clublist/location.svg";
 import Arrow from "@public/common/arrow-right.svg";
 import { dictClub, dictArea } from "@utils/util";
+import { DEFAULT_IMAGE_URL } from "@utils/constant";
 
 export default function BelongClub({ clubData }) {
   return (
@@ -11,7 +12,7 @@ export default function BelongClub({ clubData }) {
       {clubData.map(({ belong: { club } }) => (
         <div key={club.id} className={styles.club}>
           <div className={styles.poster}>
-            <Image src={club.imageUrl || "/clublist/default.png"} alt="동아리 사진" width={115} height={163} />
+            <Image src={club.imageUrl || DEFAULT_IMAGE_URL} alt="동아리 사진" width={115} height={163} />
           </div>
           <div className={styles.clubInfo}>
             <div className={styles.title}>{club.name}</div>

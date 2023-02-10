@@ -1,6 +1,6 @@
 import { getDate } from "@utils/util";
 import Image from "next/image";
-import React, { useContext, memo, cloneElement, useRef, useEffect, useState } from "react";
+import React, { useContext, memo, useEffect, useState } from "react";
 import { useMemo } from "react";
 import { createContext } from "react";
 import styles from "./Form.module.scss";
@@ -84,17 +84,24 @@ function InputSubmit({ children }) {
 
 function InputFile({ name, value, onChange, alt, title }) {
   const [imgSrc, setImgSrc] = useState(value);
-
   useEffect(() => {
     if (value instanceof File) {
       setImgSrc(URL.createObjectURL(value));
+    } else {
+      setImgSrc(value);
     }
   }, [value]);
 
   return (
     <InputWrapper title={title}>
-      <label htmlFor={name} className={styles.input_border}>
+      <label htmlFor={name} className={`${styles.input_border} ${styles.image_selector}`}>
         <Image src={imgSrc || "/image-select.svg"} alt={alt} objectFit="contain" width={115} height={163} />
+        {imgSrc && (
+          <label htmlFor="reset" className={styles.reset_btn}>
+            <Image src={"/common/reset.svg"} alt="이미지 초기화" width={40} height={40} />
+          </label>
+        )}
+        <input type="reset" id="reset" value="" name={name} onClick={onChange} />
       </label>
       <input type="file" id={name} name={name} onChange={onChange} accept="image/*" />
     </InputWrapper>

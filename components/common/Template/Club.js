@@ -3,14 +3,14 @@ import { useForm } from "@hooks/useForm";
 import { dictArea, dictClub } from "@utils/util";
 
 export default function ClubTemplate({ submitText, defaultInfo = {}, onSubmit }) {
-  const { name, introduction, category, area, image } = defaultInfo;
+  const { name, introduction, category, area, imageUrl } = defaultInfo;
 
   const { value, onChange } = useForm({
     name: name || "",
     introduction: introduction || "",
     category: category || null,
     area: area || null,
-    image: image || null,
+    image: imageUrl || null,
   });
 
   return (

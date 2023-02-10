@@ -4,7 +4,11 @@ export function useForm(initialValue, setFunction) {
   const [value, setValue] = useState(initialValue);
   const onChange = useCallback(
     (e) => {
-      let newValue = setFunction ? setFunction(e) : e.target.value;
+      let newValue = e.target.value;
+
+      if (setFunction) {
+        newValue = setFunction(e);
+      }
 
       if (e.target.type === "file") {
         if (!e.target.files || e.target.files.length === 0) return;

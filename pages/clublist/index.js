@@ -8,6 +8,7 @@ import Location from "@public/clublist/location.svg";
 import { categoryList, dictClub, dictArea } from "@utils/util";
 import ssrWrapper from "@utils/wrapper";
 import axiosInstance from "@utils/axios";
+import { DEFAULT_IMAGE_URL } from "@utils/constant";
 
 export default function Home({ data, search, loginInfo }) {
   const {
@@ -26,7 +27,7 @@ export default function Home({ data, search, loginInfo }) {
           <Link href={`clublist/${club.id}`} key={club.id}>
             <div className={styles.clubContainer}>
               <div className={styles.poster}>
-                <Image src={club.imageUrl || "/clublist/default.png"} alt="동아리 사진" width={115} height={163} />
+                <Image src={club.imageUrl || DEFAULT_IMAGE_URL} alt="동아리 사진" width={115} height={163} />
               </div>
               <div className={styles.clubInfo}>
                 <div className={styles.title}>{club.name}</div>
