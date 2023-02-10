@@ -6,7 +6,7 @@ import ClubTemplate from "@components/common/Template/Club";
 import PageWrapper from "@components/common/PageWrapper";
 import TemplateWrapper from "@components/common/Template/TemplateWrapper";
 
-export default function Modification({ loginInfo, defaultInfo }) {
+export default function Modification({ loginInfo, defaultInfo, clubId }) {
   const router = useRouter();
 
   const validationCheck = (value) => {
@@ -22,10 +22,11 @@ export default function Modification({ loginInfo, defaultInfo }) {
 
   const onSubmit = async (value) => {
     if (!validationCheck(value)) return;
-
     const formData = getFormData({
       ...value,
       id: loginInfo.userName,
+      isImageChanged: value.image !== defaultInfo.image,
+      clubId,
     });
 
     try {
@@ -51,7 +52,7 @@ export default function Modification({ loginInfo, defaultInfo }) {
 }
 
 export const getServerSideProps = ssrWrapper(async ({ userId, context }) => {
-  const { clubId } = context.query;
+  const { clubid: clubId } = context.params;
 
   if (!userId) throw { url: "/login" };
 
@@ -59,5 +60,5 @@ export const getServerSideProps = ssrWrapper(async ({ userId, context }) => {
 
   const data = await axiosInstance.get(`/clubs/${clubId}`);
 
-  return { defaultInfo: data.club };
+  return { defaultInfo: data.club, clubId };
 });
