@@ -101,7 +101,7 @@ function InputFile({ name, value, onChange, alt, title }) {
             <Image src={"/common/reset.svg"} alt="이미지 초기화" width={40} height={40} />
           </label>
         )}
-        <input type="reset" id="reset" name={name} onClick={onChange} />
+        <input type="reset" id="reset" value="" name={name} onClick={onChange} />
       </label>
       <input type="file" id={name} name={name} onChange={onChange} accept="image/*" />
     </InputWrapper>
