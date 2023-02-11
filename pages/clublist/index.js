@@ -1,6 +1,6 @@
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import { useState } from "react";
-import Image from "next/image";
+import Image from "@components/common/Image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import styles from "@styles/pages/clublist.module.scss";
@@ -27,7 +27,7 @@ export default function Home({ data, search, loginInfo }) {
           <Link href={`clublist/${club.id}`} key={club.id}>
             <div className={styles.clubContainer}>
               <div className={styles.poster}>
-                <Image src={club.imageUrl || DEFAULT_IMAGE_URL} alt="동아리 사진" width={115} height={163} />
+                <Image src={club.imageUrl} alt="동아리 사진" width={115} height={163} />
               </div>
               <div className={styles.clubInfo}>
                 <div className={styles.title}>{club.name}</div>
