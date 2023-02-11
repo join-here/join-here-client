@@ -1,13 +1,12 @@
 import styles from "@styles/pages/manage.module.scss";
 import Location from "@public/clublist/location.svg";
 import Arrow from "@public/clublist/arrow-right.svg";
-import Image from "next/image";
+import Image from "@components/common/Image";
 import Link from "next/link";
 import { categoryList, dictArea, dictPosition } from "@utils/util";
 import ssrWrapper from "@utils/wrapper";
 import axiosInstance from "@utils/axios";
 import PageWrapper from "@components/common/PageWrapper";
-import { DEFAULT_IMAGE_URL } from "@utils/constant";
 
 export default function Manage({ data }) {
   return (
@@ -21,7 +20,7 @@ export default function Manage({ data }) {
           return (
             <section key={index} className={styles.clubContainer}>
               <div className={styles.left_section}>
-                <Image src={imageUrl || DEFAULT_IMAGE_URL} alt={`${name} 메인 포스터`} layout={"fill"} objectFit={"contain"} />
+                <Image src={imageUrl} alt={`${name} 메인 포스터`} layout={"fill"} objectFit={"contain"} />
               </div>
               <div className={styles.center_section}>
                 <div className={styles.title}>{name}</div>
@@ -31,7 +30,7 @@ export default function Manage({ data }) {
                     <Location />
                     {dictArea[area]}
                   </div>
-                  <div className={`${styles.class}`}>{dictPosition[position]}</div>
+                  <div className={styles.class}>{dictPosition[position]}</div>
                 </div>
               </div>
               <ul className={styles.right_section}>

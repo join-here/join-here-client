@@ -1,5 +1,5 @@
 import { getDate } from "@utils/util";
-import Image from "next/image";
+import Image from "@components/common/Image";
 import React, { useContext, memo, useEffect, useState } from "react";
 import { useMemo } from "react";
 import { createContext } from "react";
