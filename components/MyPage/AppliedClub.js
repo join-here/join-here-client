@@ -4,10 +4,11 @@ import Arrow from "@public/common/arrow-right.svg";
 import { stateDict } from "@utils/util";
 
 export default function AppliedClub({ applicationData, userId }) {
+  console.log(applicationData);
   return (
     <section className={styles.applicationContainer}>
       {applicationData.map((club) => (
-        <div className={styles.club} key={club.clubId}>
+        <div className={styles.club} key={club.applicationId}>
           <div className={styles.name}>{club.clubName}</div>
           <div className={`${styles.state} ${styles[club.passState]}`}>{club.passState === "hold" ? "심사중" : stateDict[club.passState]}</div>
           <Link
