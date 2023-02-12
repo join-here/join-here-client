@@ -121,7 +121,7 @@ export default function Club({ data, loginInfo, isBelong, clubId }) {
         </div>
         <div className={`${styles.desc} ${introduction.length < 60 ? styles.center : undefined}`}>{introduction}</div>
         {currentDate >= startDate && currentDate <= endDate && !isBelong ? (
-          <Link href={`/clublist/${data.announcement?.id}/apply`}>
+          <Link href={`/club/${data.announcement?.id}/apply`}>
             <input type="button" value="지원하기" className={styles.applyButton} />
           </Link>
         ) : null}
