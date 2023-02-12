@@ -8,7 +8,6 @@ import Location from "@public/clublist/location.svg";
 import { categoryList, dictClub, dictArea } from "@utils/util";
 import ssrWrapper from "@utils/wrapper";
 import axiosInstance from "@utils/axios";
-import { DEFAULT_IMAGE_URL } from "@utils/constant";
 
 export default function Home({ data, search, loginInfo }) {
   const {

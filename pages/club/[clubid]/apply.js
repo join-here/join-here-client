@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useRouter } from "next/router";
 import ssrWrapper from "@utils/wrapper";
 import axiosInstance from "@utils/axios";
