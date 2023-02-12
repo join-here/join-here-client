@@ -2,6 +2,7 @@ import cookies from "next-cookies";
 import Head from "next/head";
 import "@styles/global.scss";
 import Layout from "@components/Layout";
+import { FooterColorProvider } from "@contexts/footerColor";
 
 export default function MyApp({ Component, pageProps }) {
   return (
@@ -9,9 +10,11 @@ export default function MyApp({ Component, pageProps }) {
       <Head>
         <title>조인히어</title>
       </Head>
-      <Layout {...pageProps}>
-        <Component {...pageProps} />
-      </Layout>
+      <FooterColorProvider>
+        <Layout {...pageProps}>
+          <Component {...pageProps} />
+        </Layout>
+      </FooterColorProvider>
     </>
   );
 }
