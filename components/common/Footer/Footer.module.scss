@@ -3,4 +3,23 @@
   height: $footer_height;
   border-top: 3px solid var(--contour);
   background-color: white;
+  .content {
+    width: 100%;
+    height: 100%;
+    @include display-flex($dir: column, $gap: 10px);
+    p {
+      @include display-flex($gap: 5px);
+      font-size: var(--h6);
+      a {
+        height: 28px;
+        img {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+.dark {
+  background-color: var(--contour);
 }
