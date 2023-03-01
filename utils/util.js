@@ -1,4 +1,4 @@
-import axiosInstance from "@utils/axios";
+import axiosInstance from "./axios";
 
 export const getFormData = ({ image, ...data }) => {
   const formData = new FormData();

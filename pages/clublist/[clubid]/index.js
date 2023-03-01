@@ -100,7 +100,7 @@ export default function Club({ data, loginInfo, isBelong, clubId }) {
   return (
     <div className={styles.container}>
       <div className={styles.topContainer}>
-        <div className={styles.title}>
+        <div className={styles.title} id="title">
           {name}
           {!loginInfo.isLoggedIn ? null : scrap ? (
             <Scrap className={`${styles.scrap} ${styles.bounce}`} onClick={() => setScrap((prev) => !prev)} />
@@ -109,8 +109,10 @@ export default function Club({ data, loginInfo, isBelong, clubId }) {
           )}
         </div>
         <div className={styles.info}>
-          <div className={styles.category}>{dictClub[category][0]}</div>
-          <div className={styles.location}>
+          <div className={styles.category} id="category">
+            {dictClub[category][0]}
+          </div>
+          <div className={styles.location} id="area">
             <Location />
             {dictArea[area]}
           </div>
@@ -119,7 +121,9 @@ export default function Club({ data, loginInfo, isBelong, clubId }) {
           <span>조회수 {viewCount}</span>
           <span>찜한수 {scrapCount}</span>
         </div>
-        <div className={`${styles.desc} ${introduction.length < 60 ? styles.center : undefined}`}>{introduction}</div>
+        <div className={`${styles.desc} ${introduction.length < 60 ? styles.center : undefined}`} id="introduction">
+          {introduction}
+        </div>
         {currentDate >= startDate && currentDate <= endDate && !isBelong ? (
           <Link href={`/club/${data.announcement?.id}/apply`}>
             <input type="button" value="지원하기" className={styles.applyButton} />
@@ -162,16 +166,16 @@ export default function Club({ data, loginInfo, isBelong, clubId }) {
 
           <TabPanel>
             <div className={styles.reviewContainer}>
-              <textarea className={styles.reviewInput} value={reviewInput} onChange={(e) => setReviewInput(e.target.value)}></textarea>
+              <textarea className={styles.reviewInput} name="review" value={reviewInput} onChange={(e) => setReviewInput(e.target.value)}></textarea>
               <input type="button" value="후기 등록하기" className={styles.reviewAssignButton} onClick={submitReview} />
-              <div className={styles.reviewList}>
-                {reviewList.map(({ reviewId, reviewContent, memberId, reviewTime }) => (
+              <div className={styles.reviewList} id={`review_list`}>
+                {reviewList.map(({ reviewId, reviewContent, memberId, reviewTime }, idx) => (
                   <section key={reviewId} className={styles.review}>
                     <div className={styles.info}>
                       <div className={styles.name}>{memberId}</div>
                       <div className={styles.date}>{formatting(new Date(reviewTime))}</div>
                       {memberId === loginInfo.userName && (
-                        <div className={styles.delete} onClick={() => deleteReview(reviewId)}>
+                        <div className={`${styles.delete} delete`} onClick={() => deleteReview(reviewId)}>
                           삭제
                         </div>
                       )}
