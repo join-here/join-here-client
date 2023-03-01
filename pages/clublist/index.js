@@ -11,7 +11,7 @@ import axiosInstance from "@utils/axios";
 
 export default function Home({ data, search, loginInfo }) {
   const {
-    query: { tab },
+    query: { tab = "all" },
     push,
   } = useRouter();
 
@@ -70,7 +70,7 @@ export default function Home({ data, search, loginInfo }) {
         </div>
         <div className={styles.tabPannelContainer}>
           {categoryList.map((category, idx) => (
-            <TabPanel key={idx} className={styles.tabPannel}>
+            <TabPanel key={idx} className={`panel${idx} ${styles.tabPannel}`}>
               {filterClubList(category.id)}
             </TabPanel>
           ))}
